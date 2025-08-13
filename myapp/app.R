@@ -39,7 +39,9 @@ modul_literature_review_ui <- function(id) {
     
     uiOutput(ns("buka_pemilihan_informasi_bebankerja_terhadap_kepuasankerja")),
     uiOutput(ns("buka_pemilihan_informasi_bebankerja_terhadap_turnoverintention")),
-    
+    uiOutput(ns("buka_pemilihan_informasi_kepuasankerja_terhadap_turnoverintention")),
+    uiOutput(ns("buka_pemilihan_informasi_motivasikerja_terhadap_kepuasankerja")),
+    uiOutput(ns("buka_pemilihan_informasi_motivasikerja_terhadap_turnoverintention")),
     #uiOutput(ns("buka_pemilihan_informasi")),
     
   
@@ -49,10 +51,37 @@ modul_literature_review_ui <- function(id) {
     #DT::DTOutput(ns("buka_data")),
     DT::DTOutput(ns("buka_data_bebankerja_terhadap_kepuasankerja")),
     DT::DTOutput(ns("buka_data_bebankerja_terhadap_turnoverintention")),           
+    DT::DTOutput(ns("buka_data_kepuasankerja_terhadap_turnoverintention")),           
+    DT::DTOutput(ns("buka_data_motivasikerja_terhadap_kepuasankerja")),
+    DT::DTOutput(ns("buka_data_motivasikerja_terhadap_turnoverintention")),             
                
                
-               
-               
+    
+    
+    
+    
+    
+    br(),
+    
+    
+    #DT::DTOutput(ns("buka_data")),
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     br()
@@ -157,7 +186,9 @@ modul_literature_review_server <- function(input, output, session) {
     
     nama_topik <- c("Beban Kerja terhadap Kepuasan Kerja",
                     "Beban Kerja terhadap Turnover Intention",
-                    "Kepuasan Kerja terhadap Turnover Intention")
+                    "Kepuasan Kerja terhadap Turnover Intention",
+                    "Motivasi Kerja terhadap Kepuasan Kerja",
+                    "Motivasi Kerja terhadap Turnover Intention")
     
     
     
@@ -385,6 +416,429 @@ modul_literature_review_server <- function(input, output, session) {
     
     
   })
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  ###############
+  
+  
+  
+  nama_variabel_kepuasankerja_terhadap_turnoverintention <- function()
+  {
+    
+    dat <- read_xlsx("Kepuasan Kerja terhadap Turnover Intention.xlsx")
+    dat <- as.data.frame(dat)
+    
+    nama <- colnames(dat)
+    
+    return(nama)
+    
+    
+  }
+  
+  
+  
+  
+  output$buka_pemilihan_informasi_kepuasankerja_terhadap_turnoverintention <- renderUI({
+    
+    
+    
+    if(input$terpilih_topik_paper == "Kepuasan Kerja terhadap Turnover Intention")
+    {
+      
+      
+      checkboxGroupInput(session$ns("terpilih_variabel_kepuasankerja_terhadap_turnoverintention"), 
+                         label="Pilih Variabel:", choices = c(nama_variabel_kepuasankerja_terhadap_turnoverintention()), 
+                         selected=c("Judul Artikel", "Author", "Link Artikel", "Nama Jurnal" ), inline = TRUE)
+      
+      
+    }
+    
+    
+    
+  })
+  
+  
+  
+  
+  
+  ##################
+  
+  
+  
+  
+  
+  output$buka_data_kepuasankerja_terhadap_turnoverintention <- DT::renderDT({
+    
+    
+    if(input$terpilih_topik_paper == "Kepuasan Kerja terhadap Turnover Intention")
+    {
+      
+      dat <- read_xlsx("Kepuasan Kerja terhadap Turnover Intention.xlsx")
+      dat <- as.data.frame(dat)
+      
+      nama <- colnames(dat)
+      
+      
+      terpilih_variabel <- input$terpilih_variabel_kepuasankerja_terhadap_turnoverintention
+      
+      dat_baru <- dat[c(terpilih_variabel)]
+      
+      print(dat_baru)
+      
+      
+    }
+    
+    
+  })
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  ###############
+  
+  
+  
+  nama_variabel_motivasikerja_terhadap_kepuasankerja <- function()
+  {
+    
+    dat <- read_xlsx("Motivasi Kerja terhadap Kepuasan Kerja.xlsx")
+    dat <- as.data.frame(dat)
+    
+    nama <- colnames(dat)
+    
+    return(nama)
+    
+    
+  }
+  
+  
+  
+  
+  output$buka_pemilihan_informasi_motivasikerja_terhadap_kepuasankerja <- renderUI({
+    
+    
+    
+    if(input$terpilih_topik_paper == "Motivasi Kerja terhadap Kepuasan Kerja")
+    {
+      
+      
+      checkboxGroupInput(session$ns("terpilih_variabel_motivasikerja_terhadap_kepuasankerja"), 
+                         label="Pilih Variabel:", choices = c(nama_variabel_motivasikerja_terhadap_kepuasankerja()), 
+                         selected=c("Judul Artikel", "Author", "Link Artikel", "Nama Jurnal" ), inline = TRUE)
+      
+      
+    }
+    
+    
+    
+  })
+  
+  
+  
+  
+  
+  ##################
+  
+  
+  
+  
+  
+  output$buka_data_motivasikerja_terhadap_kepuasankerja <- DT::renderDT({
+    
+    
+    if(input$terpilih_topik_paper == "Motivasi Kerja terhadap Kepuasan Kerja")
+    {
+      
+      dat <- read_xlsx("Motivasi Kerja terhadap Kepuasan Kerja.xlsx")
+      dat <- as.data.frame(dat)
+      
+      nama <- colnames(dat)
+      
+      
+      terpilih_variabel <- input$terpilih_variabel_motivasikerja_terhadap_kepuasankerja
+      
+      dat_baru <- dat[c(terpilih_variabel)]
+      
+      print(dat_baru)
+      
+      
+    }
+    
+    
+  })
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  ###############
+  
+  
+  
+  nama_variabel_motivasikerja_terhadap_turnoverintention <- function()
+  {
+    
+    dat <- read_xlsx("Motivasi Kerja terhadap Turnover Intention.xlsx")
+    dat <- as.data.frame(dat)
+    
+    nama <- colnames(dat)
+    
+    return(nama)
+    
+    
+  }
+  
+  
+  
+  
+  output$buka_pemilihan_informasi_motivasikerja_terhadap_turnoverintention <- renderUI({
+    
+    
+    
+    if(input$terpilih_topik_paper == "Motivasi Kerja terhadap Turnover Intention")
+    {
+      
+      
+      checkboxGroupInput(session$ns("terpilih_variabel_motivasikerja_terhadap_turnoverintention"), 
+                         label="Pilih Variabel:", choices = c(nama_variabel_motivasikerja_terhadap_turnoverintention()), 
+                         selected=c("Judul Artikel", "Author", "Link Artikel", "Nama Jurnal" ), inline = TRUE)
+      
+      
+    }
+    
+    
+    
+  })
+  
+  
+  
+  
+  
+  ##################
+  
+  
+  
+  
+  
+  output$buka_data_motivasikerja_terhadap_turnoverintention <- DT::renderDT({
+    
+    
+    if(input$terpilih_topik_paper == "Motivasi Kerja terhadap Turnover Intention")
+    {
+      
+      dat <- read_xlsx("Motivasi Kerja terhadap Turnover Intention.xlsx")
+      dat <- as.data.frame(dat)
+      
+      nama <- colnames(dat)
+      
+      
+      terpilih_variabel <- input$terpilih_variabel_motivasikerja_terhadap_turnoverintention
+      
+      dat_baru <- dat[c(terpilih_variabel)]
+      
+      print(dat_baru)
+      
+      
+    }
+    
+    
+  })
+  
+  
+  
   
   
   
