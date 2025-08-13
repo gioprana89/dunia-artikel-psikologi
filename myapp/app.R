@@ -42,6 +42,11 @@ modul_literature_review_ui <- function(id) {
     uiOutput(ns("buka_pemilihan_informasi_kepuasankerja_terhadap_turnoverintention")),
     uiOutput(ns("buka_pemilihan_informasi_motivasikerja_terhadap_kepuasankerja")),
     uiOutput(ns("buka_pemilihan_informasi_motivasikerja_terhadap_turnoverintention")),
+    
+    
+    uiOutput(ns("buka_pemilihan_informasi_Kumpulan_Artikel_di_Jurnal_dengan_Metode_Analisis_Data_PLSSEM")),
+    
+    
     #uiOutput(ns("buka_pemilihan_informasi")),
     
   
@@ -56,7 +61,7 @@ modul_literature_review_ui <- function(id) {
     DT::DTOutput(ns("buka_data_motivasikerja_terhadap_turnoverintention")),             
                
                
-    
+    DT::DTOutput(ns("buka_data_Kumpulan_Artikel_di_Jurnal_dengan_Metode_Analisis_Data_PLSSEM")),   
     
     
     
@@ -188,7 +193,11 @@ modul_literature_review_server <- function(input, output, session) {
                     "Beban Kerja terhadap Turnover Intention (PLS-SEM, SmartPLS)",
                     "Kepuasan Kerja terhadap Turnover Intention (PLS-SEM, SmartPLS)",
                     "Motivasi Kerja terhadap Kepuasan Kerja (PLS-SEM, SmartPLS)",
-                    "Motivasi Kerja terhadap Turnover Intention (PLS-SEM, SmartPLS)")
+                    "Motivasi Kerja terhadap Turnover Intention (PLS-SEM, SmartPLS)",
+                    
+                    
+                    
+                    "Kumpulan Artikel di Jurnal dengan Metode Analisis Data PLS-SEM")
     
     
     
@@ -204,7 +213,7 @@ modul_literature_review_server <- function(input, output, session) {
     
     radioButtons(session$ns("terpilih_topik_paper"), 
                        label="Pilih Topik:", choices = c(nama_topik()), 
-                       selected=c("Beban Kerja terhadap Kepuasan Kerja (PLS-SEM, SmartPLS)"), inline = TRUE)
+                       selected=c("Beban Kerja terhadap Kepuasan Kerja (PLS-SEM, SmartPLS)"), inline = FALSE)
     
     
     
@@ -842,6 +851,228 @@ modul_literature_review_server <- function(input, output, session) {
   
   
   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  ###############
+  
+  
+  
+  nama_Kumpulan_Artikel_di_Jurnal_dengan_Metode_Analisis_Data_PLSSEM <- function()
+  {
+    
+    dat <- read_xlsx("Kumpulan Artikel Jurnal Nasional dan Internasional Bidang Psikologi dengan Metode PLS-SEM.xlsx")
+    dat <- as.data.frame(dat)
+    
+    nama <- colnames(dat)
+    
+    return(nama)
+    
+    
+  }
+  
+  
+  
+  
+  output$buka_pemilihan_informasi_Kumpulan_Artikel_di_Jurnal_dengan_Metode_Analisis_Data_PLSSEM <- renderUI({
+    
+    
+    
+    if(input$terpilih_topik_paper == "Kumpulan Artikel di Jurnal dengan Metode Analisis Data PLS-SEM")
+    {
+      
+      
+      checkboxGroupInput(session$ns("terpilih_Kumpulan_Artikel_di_Jurnal_dengan_Metode_Analisis_Data_PLSSEM"), 
+                         label="Pilih Variabel:", choices = c(nama_Kumpulan_Artikel_di_Jurnal_dengan_Metode_Analisis_Data_PLSSEM()), 
+                         selected=c("Tahun", "Judul", "Link Artikel", "Jurnal" ), inline = TRUE)
+      
+      
+    }
+    
+    
+    
+  })
+  
+  
+  
+  
+  
+  ##################
+  
+  
+  
+  
+  
+  output$buka_data_motivasikerja_terhadap_turnoverintention <- DT::renderDT({
+    
+    
+    if(input$terpilih_topik_paper == "Kumpulan Artikel di Jurnal dengan Metode Analisis Data PLS-SEM")
+    {
+      
+      dat <- read_xlsx("Kumpulan Artikel Jurnal Nasional dan Internasional Bidang Psikologi dengan Metode PLS-SEM.xlsx")
+      dat <- as.data.frame(dat)
+      
+      nama <- colnames(dat)
+      
+      
+      terpilih_variabel <- input$terpilih_Kumpulan_Artikel_di_Jurnal_dengan_Metode_Analisis_Data_PLSSEM
+      
+      dat_baru <- dat[c(terpilih_variabel)]
+      
+      print(dat_baru)
+      
+      
+    }
+    
+    
+  })
   
   
   
