@@ -189,15 +189,15 @@ modul_literature_review_server <- function(input, output, session) {
   {
     
     
-    nama_topik <- c("Beban Kerja terhadap Kepuasan Kerja (PLS-SEM, SmartPLS)",
-                    "Beban Kerja terhadap Turnover Intention (PLS-SEM, SmartPLS)",
-                    "Kepuasan Kerja terhadap Turnover Intention (PLS-SEM, SmartPLS)",
-                    "Motivasi Kerja terhadap Kepuasan Kerja (PLS-SEM, SmartPLS)",
-                    "Motivasi Kerja terhadap Turnover Intention (PLS-SEM, SmartPLS)",
+    nama_topik <- c("Beban Kerja terhadap Kepuasan Kerja (PLS-SEM, SmartPLS) (5 Artikel)",
+                    "Beban Kerja terhadap Turnover Intention (PLS-SEM, SmartPLS) (6 Artikel)",
+                    "Kepuasan Kerja terhadap Turnover Intention (PLS-SEM, SmartPLS) (3 Artikel)",
+                    "Motivasi Kerja terhadap Kepuasan Kerja (PLS-SEM, SmartPLS) (6 Artikel)",
+                    "Motivasi Kerja terhadap Turnover Intention (PLS-SEM, SmartPLS) (6 Artikel)",
                     
                     
                     
-                    "Kumpulan Artikel di Jurnal dengan Metode Analisis Data PLS-SEM")
+                    "Kumpulan Artikel di Jurnal dengan Metode Analisis Data PLS-SEM (70 Artikel)")
     
     
     
@@ -213,7 +213,7 @@ modul_literature_review_server <- function(input, output, session) {
     
     radioButtons(session$ns("terpilih_topik_paper"), 
                        label="Pilih Topik:", choices = c(nama_topik()), 
-                       selected=c("Beban Kerja terhadap Kepuasan Kerja (PLS-SEM, SmartPLS)"), inline = FALSE)
+                       selected=c("Beban Kerja terhadap Kepuasan Kerja (PLS-SEM, SmartPLS) (5 Artikel)"), inline = FALSE)
     
     
     
@@ -266,7 +266,7 @@ modul_literature_review_server <- function(input, output, session) {
     
     
       
-      if(input$terpilih_topik_paper == "Beban Kerja terhadap Kepuasan Kerja (PLS-SEM, SmartPLS)")
+      if(input$terpilih_topik_paper == "Beban Kerja terhadap Kepuasan Kerja (PLS-SEM, SmartPLS) (5 Artikel)")
       {
       
       
@@ -294,7 +294,7 @@ modul_literature_review_server <- function(input, output, session) {
   output$buka_data_bebankerja_terhadap_kepuasankerja <- DT::renderDT({
     
     
-    if(input$terpilih_topik_paper == "Beban Kerja terhadap Kepuasan Kerja (PLS-SEM, SmartPLS)")
+    if(input$terpilih_topik_paper == "Beban Kerja terhadap Kepuasan Kerja (PLS-SEM, SmartPLS) (5 Artikel)")
     {
    
     dat <- read_xlsx("Beban Kerja terhadap Kepuasan Kerja.xlsx")
@@ -377,7 +377,7 @@ modul_literature_review_server <- function(input, output, session) {
     
     
     
-    if(input$terpilih_topik_paper == "Beban Kerja terhadap Turnover Intention (PLS-SEM, SmartPLS)")
+    if(input$terpilih_topik_paper == "Beban Kerja terhadap Turnover Intention (PLS-SEM, SmartPLS) (6 Artikel)")
     {
       
       
@@ -405,7 +405,7 @@ modul_literature_review_server <- function(input, output, session) {
   output$buka_data_bebankerja_terhadap_turnoverintention <- DT::renderDT({
     
     
-    if(input$terpilih_topik_paper == "Beban Kerja terhadap Turnover Intention (PLS-SEM, SmartPLS)")
+    if(input$terpilih_topik_paper == "Beban Kerja terhadap Turnover Intention (PLS-SEM, SmartPLS) (6 Artikel)")
     {
       
       dat <- read_xlsx("Beban Kerja terhadap Turnover Intention.xlsx")
@@ -503,7 +503,7 @@ modul_literature_review_server <- function(input, output, session) {
     
     
     
-    if(input$terpilih_topik_paper == "Kepuasan Kerja terhadap Turnover Intention (PLS-SEM, SmartPLS)")
+    if(input$terpilih_topik_paper == "Kepuasan Kerja terhadap Turnover Intention (PLS-SEM, SmartPLS) (3 Artikel)")
     {
       
       
@@ -531,7 +531,7 @@ modul_literature_review_server <- function(input, output, session) {
   output$buka_data_kepuasankerja_terhadap_turnoverintention <- DT::renderDT({
     
     
-    if(input$terpilih_topik_paper == "Kepuasan Kerja terhadap Turnover Intention (PLS-SEM, SmartPLS)")
+    if(input$terpilih_topik_paper == "Kepuasan Kerja terhadap Turnover Intention (PLS-SEM, SmartPLS) (3 Artikel)")
     {
       
       dat <- read_xlsx("Kepuasan Kerja terhadap Turnover Intention.xlsx")
@@ -644,7 +644,7 @@ modul_literature_review_server <- function(input, output, session) {
     
     
     
-    if(input$terpilih_topik_paper == "Motivasi Kerja terhadap Kepuasan Kerja (PLS-SEM, SmartPLS)")
+    if(input$terpilih_topik_paper == "Motivasi Kerja terhadap Kepuasan Kerja (PLS-SEM, SmartPLS) (6 Artikel)")
     {
       
       
@@ -672,7 +672,7 @@ modul_literature_review_server <- function(input, output, session) {
   output$buka_data_motivasikerja_terhadap_kepuasankerja <- DT::renderDT({
     
     
-    if(input$terpilih_topik_paper == "Motivasi Kerja terhadap Kepuasan Kerja (PLS-SEM, SmartPLS)")
+    if(input$terpilih_topik_paper == "Motivasi Kerja terhadap Kepuasan Kerja (PLS-SEM, SmartPLS) (6 Artikel)")
     {
       
       dat <- read_xlsx("Motivasi Kerja terhadap Kepuasan Kerja.xlsx")
@@ -797,7 +797,7 @@ modul_literature_review_server <- function(input, output, session) {
     
     
     
-    if(input$terpilih_topik_paper == "Motivasi Kerja terhadap Turnover Intention (PLS-SEM, SmartPLS)")
+    if(input$terpilih_topik_paper == "Motivasi Kerja terhadap Turnover Intention (PLS-SEM, SmartPLS) (6 Artikel)")
     {
       
       
@@ -825,9 +825,11 @@ modul_literature_review_server <- function(input, output, session) {
   output$buka_data_motivasikerja_terhadap_turnoverintention <- DT::renderDT({
     
     
-    if(input$terpilih_topik_paper == "Motivasi Kerja terhadap Turnover Intention (PLS-SEM, SmartPLS)")
+    
+    if(input$terpilih_topik_paper == "Motivasi Kerja terhadap Turnover Intention (PLS-SEM, SmartPLS) (6 Artikel)")
     {
       
+
       dat <- read_xlsx("Motivasi Kerja terhadap Turnover Intention.xlsx")
       dat <- as.data.frame(dat)
       
@@ -1025,7 +1027,7 @@ modul_literature_review_server <- function(input, output, session) {
     
     
     
-    if(input$terpilih_topik_paper == "Kumpulan Artikel di Jurnal dengan Metode Analisis Data PLS-SEM")
+    if(input$terpilih_topik_paper == "Kumpulan Artikel di Jurnal dengan Metode Analisis Data PLS-SEM (70 Artikel)")
     {
       
       
@@ -1050,10 +1052,10 @@ modul_literature_review_server <- function(input, output, session) {
   
   
   
-  output$buka_data_motivasikerja_terhadap_turnoverintention <- DT::renderDT({
+  output$buka_data_Kumpulan_Artikel_di_Jurnal_dengan_Metode_Analisis_Data_PLSSEM <- DT::renderDT({
     
     
-    if(input$terpilih_topik_paper == "Kumpulan Artikel di Jurnal dengan Metode Analisis Data PLS-SEM")
+    if(input$terpilih_topik_paper == "Kumpulan Artikel di Jurnal dengan Metode Analisis Data PLS-SEM (70 Artikel)")
     {
       
       dat <- read_xlsx("Kumpulan Artikel Jurnal Nasional dan Internasional Bidang Psikologi dengan Metode PLS-SEM.xlsx")
